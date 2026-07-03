@@ -1,0 +1,55 @@
+<nav class="fixed top-0 w-full z-50 bg-sand/90 dark:bg-space/90 backdrop-blur-md border-b border-coffee/10 dark:border-cosmic/20 transition-colors duration-500">
+  <div class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+
+    <!-- Left: Menu icon -->
+    <button
+      (click)="toggleMenu()"
+      aria-label="Menu"
+      class="flex flex-col gap-1.5 p-2">
+      <span class="w-8 h-0.5 bg-espresso dark:bg-lavender rounded-full"></span>
+      <span class="w-8 h-0.5 bg-espresso dark:bg-lavender rounded-full"></span>
+      <span class="w-8 h-0.5 bg-espresso dark:bg-lavender rounded-full"></span>
+    </button>
+
+    <!-- Right: nav links + toggle -->
+    <div class="hidden md:flex items-center gap-10 text-lg font-semibold text-espresso dark:text-lavender">
+      <a href="#about" class="hover:text-ocean dark:hover:text-cosmic transition-colors">About</a>
+      <a href="#skills" class="hover:text-ocean dark:hover:text-cosmic transition-colors">Skills</a>
+      <a href="#projects" class="hover:text-ocean dark:hover:text-cosmic transition-colors">Projects</a>
+      <a href="#experience" class="hover:text-ocean dark:hover:text-cosmic transition-colors">Experience</a>
+      <a href="#contact" class="hover:text-ocean dark:hover:text-cosmic transition-colors">Contact</a>
+
+      <button
+        (click)="theme.toggle()"
+        class="w-12 h-12 rounded-full flex items-center justify-center bg-seafoam dark:bg-nebula hover:scale-110 transition-transform text-2xl"
+        aria-label="Toggle theme">
+        @if (theme.isDark()) {
+          <span>🌜</span>
+        } @else {
+          <span>🌞</span>
+        }
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile dropdown menu (opens when hamburger is tapped) -->
+  @if (isMenuOpen()) {
+    <div class="md:hidden flex flex-col items-center gap-6 py-8 text-lg font-semibold text-espresso dark:text-lavender bg-sand dark:bg-space border-t border-coffee/10 dark:border-cosmic/20">
+      <a (click)="closeMenu()" href="#about" class="hover:text-ocean dark:hover:text-cosmic transition-colors">About</a>
+      <a (click)="closeMenu()" href="#skills" class="hover:text-ocean dark:hover:text-cosmic transition-colors">Skills</a>
+      <a (click)="closeMenu()" href="#projects" class="hover:text-ocean dark:hover:text-cosmic transition-colors">Projects</a>
+      <a (click)="closeMenu()" href="#experience" class="hover:text-ocean dark:hover:text-cosmic transition-colors">Experience</a>
+      <a (click)="closeMenu()" href="#contact" class="hover:text-ocean dark:hover:text-cosmic transition-colors">Contact</a>
+      <button
+        (click)="theme.toggle()"
+        class="w-12 h-12 rounded-full flex items-center justify-center bg-seafoam dark:bg-nebula text-2xl">
+        @if (theme.isDark()) {
+          <span>🌜</span>
+        } @else {
+          <span>🌞</span>
+        }
+      </button>
+    </div>
+  }
+</nav>

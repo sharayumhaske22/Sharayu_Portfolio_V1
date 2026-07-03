@@ -1,3 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-sand: #FAF3E8;
+  --color-seafoam: #E8F4F1;
+  --color-coffee: #6F4E37;
+  --color-coffee-dark: #4A3226;
+  --color-ocean: #2A9D8F;
+  --color-espresso: #3E2723;
+
+  --color-space: #0B0E23;
+  --color-nebula: #1A1B3A;
+  --color-cosmic: #8B5CF6;
+  --color-starlight: #F5D76E;
+  --color-lavender: #E5E0FF;
+}
+
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
