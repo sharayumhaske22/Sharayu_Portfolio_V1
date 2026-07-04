@@ -5,21 +5,23 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-background: #F7F5F2;
-  --color-foreground: #1F2937;
-  --color-primary: #4F46E5;
-  --color-accent: #F97316;
+  --color-background: #F4F6F4;
+  --color-foreground: #101512;
+  --color-primary: #0E9F5D;
+  --color-accent: #0E8DAE;
 
   --color-surface: color-mix(in srgb, var(--color-foreground) 4%, var(--color-background));
   --color-border: color-mix(in srgb, var(--color-foreground) 12%, transparent);
   --color-muted: color-mix(in srgb, var(--color-foreground) 60%, var(--color-background));
+
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 }
 
 .dark {
-  --color-background: #0F1115;
-  --color-foreground: #E5E7EB;
-  --color-primary: #818CF8;
-  --color-accent: #FB923C;
+  --color-background: #0A0E0C;
+  --color-foreground: #D7E5DD;
+  --color-primary: #39D98A;
+  --color-accent: #3AC7E8;
 
   --color-surface: color-mix(in srgb, var(--color-foreground) 6%, var(--color-background));
   --color-border: color-mix(in srgb, var(--color-foreground) 14%, transparent);
@@ -34,16 +36,24 @@ body {
 
 .dotted-bg {
   position: relative;
+  isolation: isolate;
 }
 
 .dotted-bg::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, var(--color-foreground) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.35;
-  mask-image: radial-gradient(circle at center, black 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 75%);
+  z-index: 0;
+  background-image: radial-gradient(circle, var(--color-primary) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.25;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
   pointer-events: none;
 }
+
+.dotted-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
