@@ -5,20 +5,45 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-sand: #FAF3E8;
-  --color-seafoam: #E8F4F1;
-  --color-coffee: #6F4E37;
-  --color-coffee-dark: #4A3226;
-  --color-ocean: #2A9D8F;
-  --color-espresso: #3E2723;
+  --color-background: #F7F5F2;
+  --color-foreground: #1F2937;
+  --color-primary: #4F46E5;
+  --color-accent: #F97316;
 
-  --color-space: #0B0E23;
-  --color-nebula: #1A1B3A;
-  --color-cosmic: #8B5CF6;
-  --color-starlight: #F5D76E;
-  --color-lavender: #E5E0FF;
+  --color-surface: color-mix(in srgb, var(--color-foreground) 4%, var(--color-background));
+  --color-border: color-mix(in srgb, var(--color-foreground) 12%, transparent);
+  --color-muted: color-mix(in srgb, var(--color-foreground) 60%, var(--color-background));
+}
+
+.dark {
+  --color-background: #0F1115;
+  --color-foreground: #E5E7EB;
+  --color-primary: #818CF8;
+  --color-accent: #FB923C;
+
+  --color-surface: color-mix(in srgb, var(--color-foreground) 6%, var(--color-background));
+  --color-border: color-mix(in srgb, var(--color-foreground) 14%, transparent);
+  --color-muted: color-mix(in srgb, var(--color-foreground) 55%, var(--color-background));
 }
 
 body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.dotted-bg {
+  position: relative;
+}
+
+.dotted-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--color-foreground) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.35;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 75%);
+  pointer-events: none;
 }
