@@ -1,0 +1,48 @@
+import { Component } from '@angular/core';
+
+interface SkillCategory {
+  title: string;
+  icon: 'frontend' | 'backend' | 'languages' | 'database' | 'tools' | 'ai';
+  skills: string[];
+}
+
+@Component({
+  selector: 'app-skills',
+  imports: [],
+  templateUrl: './skills.html',
+  styleUrl: './skills.css',
+})
+export class SkillsComponent {
+  readonly categories: SkillCategory[] = [
+        {
+      title: 'Frontend',
+      icon: 'frontend',
+      skills: ['Angular 17+', 'RxJS', 'Angular Material', 'Angular CDK', 'React.js', 'HTML5', 'CSS3'],
+    },
+    {
+      title: 'Backend',
+      icon: 'backend',
+      skills: ['Spring Boot', 'Django REST Framework', 'REST APIs'],
+    },
+    {
+      title: 'Programming Languages',
+      icon: 'languages',
+      skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'C', 'SQL', 'PHP'],
+    },
+    {
+      title: 'AI / ML',
+      icon: 'ai',
+      skills: ['RoBERTa', 'DistilBERT', 'Hugging Face Transformers', 'TensorFlow', 'Scikit-learn', 'Seq2Seq Models', 'Word Embeddings', 'Pandas', 'NumPy'],
+    },
+    {
+      title: 'Databases',
+      icon: 'database',
+      skills: ['Firebase Firestore', 'MongoDB', 'SQL', 'AngularFire'],
+    },
+    {
+      title: 'Tools ',
+      icon: 'tools',
+      skills: ['Git', 'GitHub', 'GitLab', 'Maven', 'Angular CLI', 'CI/CD', 'Postman'],
+    },
+  ];
+}

@@ -11,8 +11,8 @@ const SCRAMBLE_CHARS = '!<>-_\\/[]{}=+*^?#';
 })
 
 export class IntroCardComponent  implements OnInit, OnDestroy {
-  readonly fullName = 'Sharayu Mhaske';
-  readonly roles = ['Angular Developer', 'Full-Stack Developer', 'Researcher', 'AI/ML Enthusiast'];
+  readonly fullName = 'Sharayu_Mhaske';
+  readonly roles = ['Angular Developer', 'Full Stack Developer', 'Researcher', 'AI/ML Enthusiast'];
 
   displayName = signal('');
   displayRole = signal('');

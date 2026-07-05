@@ -1,0 +1,78 @@
+<section id="contact" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <h2 class="text-4xl md:text-5xl font-bold text-foreground text-center mb-2 font-mono">Get In Touch</h2>
+    <div class="w-16 h-1 bg-primary rounded-full mx-auto mb-16"></div>
+
+    <div class="grid md:grid-cols-2 gap-12">
+
+      <!-- Left: info -->
+      <div>
+        <h3 class="text-2xl font-bold text-primary mb-3 font-mono">Let's Connect</h3>
+        <p class="text-muted mb-8">Have a project in mind or just want to chat? Feel free to reach out!</p>
+
+        <div class="space-y-4 mb-10">
+          <div class="flex items-center gap-4 bg-surface border border-border rounded-xl p-4">
+            <div class="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-muted font-mono">Phone</p>
+              <p class="font-semibold text-foreground">{{ phone }}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 bg-surface border border-border rounded-xl p-4">
+            <div class="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-muted font-mono">Email</p>
+              <p class="font-semibold text-foreground">{{ email }}</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-sm text-muted font-mono mb-3">Connect with me</p>
+        <div class="flex gap-3">
+          <a [href]="linkedin" target="_blank" rel="noopener"
+            class="w-11 h-11 rounded-full bg-primary text-background flex items-center justify-center hover:opacity-90 transition-opacity">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <a [href]="github" target="_blank" rel="noopener"
+            class="w-11 h-11 rounded-full bg-primary text-background flex items-center justify-center hover:opacity-90 transition-opacity">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.32 9.32 0 0 1 5 0c1.9-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div>
+          <label class="block text-sm font-semibold text-primary mb-2 font-mono">Name</label>
+          <input formControlName="name" type="text" placeholder="Enter your name"
+            class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-primary mb-2 font-mono">Email</label>
+          <input formControlName="email" type="email" placeholder="Enter your email"
+            class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-primary mb-2 font-mono">Message</label>
+          <textarea formControlName="message" rows="5" placeholder="Enter your message"
+            class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-primary text-background font-semibold py-3.5 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+          Send Message
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>

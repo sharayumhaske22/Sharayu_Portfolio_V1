@@ -34,26 +34,29 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-.dotted-bg {
-  position: relative;
-  isolation: isolate;
-}
-
-.dotted-bg::before {
-  content: '';
-  position: absolute;
+.page-dot-bg {
+  position: fixed;
   inset: 0;
-  z-index: 0;
-  background-image: radial-gradient(circle, var(--color-primary) 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
-  opacity: 0.25;
-  mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+  z-index: -1;
   pointer-events: none;
 }
 
-.dotted-bg > * {
-  position: relative;
-  z-index: 1;
+.page-dot-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--color-primary) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.2;
 }
 
+.page-dot-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--color-accent) 1.8px, transparent 1.8px);
+  background-size: 22px 22px;
+  opacity: 0.9;
+  mask-image: radial-gradient(circle 140px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 140px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+}

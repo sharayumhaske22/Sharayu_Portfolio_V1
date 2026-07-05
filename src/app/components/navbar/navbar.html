@@ -2,14 +2,26 @@
   <div class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
 
     <!-- Left: Menu icon -->
-    <button
-      (click)="toggleMenu()"
-      aria-label="Menu"
-      class="flex flex-col gap-1.5 p-2">
-      <span class="w-8 h-0.5 bg-foreground rounded-full"></span>
-      <span class="w-8 h-0.5 bg-foreground rounded-full"></span>
-      <span class="w-8 h-0.5 bg-foreground rounded-full"></span>
+    <div class="flex items-center gap-4">
+      <button
+        (click)="toggleMenu()"
+        aria-label="Menu"
+        class="flex flex-col gap-1.5 p-2">
+        <span class="w-8 h-0.5 bg-foreground rounded-full"></span>
+        <span class="w-8 h-0.5 bg-foreground rounded-full"></span>
+        <span class="w-8 h-0.5 bg-foreground rounded-full"></span>
+      </button>
+      <button  (click)="refreshPage()" aria-label="Home">
+
+        <a
+        href="#"
+        aria-label="Home"
+        class="text-xl font-bold text-foreground hover:text-primary transition-colors">
+        <#SM>
+      </a>
     </button>
+      
+    </div>
 
     <!-- Right: nav links + toggle -->
     <div class="hidden md:flex items-center gap-10 text-lg font-semibold text-foreground">

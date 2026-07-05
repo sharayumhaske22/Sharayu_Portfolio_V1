@@ -9,6 +9,10 @@ import { ThemeService } from '../../services/theme';
 export class NavbarComponent {
   theme = inject(ThemeService);
   isMenuOpen = signal(false);
+  
+  refreshPage(): void {
+    window.location.reload();
+  }
 
   toggleMenu() {
     this.isMenuOpen.update(v => !v);
