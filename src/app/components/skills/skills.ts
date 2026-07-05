@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component ,ViewChild,ElementRef,inject } from '@angular/core';
+import { ThemeService } from '../../services/theme';
 
 interface SkillCategory {
   title: string;
@@ -13,6 +14,10 @@ interface SkillCategory {
   styleUrl: './skills.css',
 })
 export class SkillsComponent {
+   @ViewChild('title', { static: true }) titleRef!: ElementRef<HTMLElement>;
+  private theme = inject(ThemeService);
+  private stopScramble?: () => void;
+
   readonly categories: SkillCategory[] = [
         {
       title: 'Frontend',
