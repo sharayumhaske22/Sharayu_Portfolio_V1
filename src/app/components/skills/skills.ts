@@ -14,13 +14,14 @@ interface SkillCategory {
   styleUrl: './skills.css',
 })
 export class SkillsComponent implements OnInit, OnDestroy {
-  @ViewChild('title', { static: true }) titleRef!: ElementRef<HTMLElement>;
+  @ViewChild('titleEl', { static: true }) titleRef!: ElementRef<HTMLElement>;
   private theme = inject(ThemeService);
-   titleText = signal('');
-   private stopScramble?: () => void;
+  private stopScramble?: () => void;
+
+  titleText = signal('');
   
-   ngOnInit(): void {
-     this.stopScramble = this.theme.scrambleTextValue('Skills', (val) => this.titleText.set(val));
+  ngOnInit(): void {
+    this.stopScramble = this.theme.scrambleOnScroll(this.titleRef.nativeElement, 'Skills', (val) => this.titleText.set(val));
   }
 
   ngOnDestroy(): void {

@@ -1,5 +1,7 @@
-import { Component,} from '@angular/core';
+import { Component, ViewChild ,inject,ElementRef , signal , OnInit, OnDestroy} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ThemeService } from '../../services/theme';
+
 
 @Component({
   selector: 'app-contact',
@@ -7,12 +9,17 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit, OnDestroy {
+  @ViewChild('titleEl', { static: true }) titleRef!: ElementRef<HTMLElement>;
+  private theme = inject(ThemeService);
+  private stopScramble?: () => void;
   readonly phone = '+49 15901455664';
   readonly email = 'sharayumhaske22@gmail.com';
   readonly linkedin = 'https://www.linkedin.com/in/sharayu-mhaske';
   readonly github = 'https://github.com/sharayumhaske22';
 
+
+  titleText = signal('');
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -22,6 +29,15 @@ export class ContactComponent {
       message: ['', Validators.required],
     });
   }
+
+  ngOnInit(): void {
+    this.stopScramble = this.theme.scrambleOnScroll(this.titleRef.nativeElement,'Contact_Me',(val) => this.titleText.set(val));
+  }
+
+  ngOnDestroy(): void {
+    this.stopScramble?.();
+  }
+
 
   onSubmit(): void {
     if (this.form.invalid) return;
