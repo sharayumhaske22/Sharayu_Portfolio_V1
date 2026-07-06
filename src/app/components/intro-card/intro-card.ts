@@ -1,7 +1,5 @@
-import { Component, signal,OnDestroy,OnInit } from '@angular/core';
-
-const SCRAMBLE_CHARS = '!<>-_\\/[]{}=+*^?#';
-
+import { Component, signal,OnDestroy,OnInit, ViewChild, inject, ElementRef, AfterViewInit } from '@angular/core';
+import { ThemeService } from '../../services/theme';
 
 @Component({
   selector: 'app-intro-card',
@@ -22,42 +20,24 @@ export class IntroCardComponent  implements OnInit, OnDestroy {
   private roleIndex = 0;
   private destroyed = false;
 
+  @ViewChild('title', { static: true }) titleRef!: ElementRef<HTMLElement>;
+  private theme = inject(ThemeService);
+  private stopScramble?: () => void;
+
   ngOnInit(): void {
-    this.scrambleIntoName();
+    this.stopScramble = this.theme.scrambleTextValue('Sharayu_Mhaske',(val) => this.displayName.set(val),
+   );
+    this.cycleRoles();
   }
+
+ 
 
   ngOnDestroy(): void {
     this.destroyed = true;
-    clearInterval(this.scrambleInterval);
+    this.stopScramble?.();
     clearTimeout(this.roleTimer);
   }
 
-  private scrambleIntoName(): void {
-    let iteration = 0;
-    const maxIterations = this.fullName.length * 3;
-
-    this.scrambleInterval = setInterval(() => {
-      const revealedCount = Math.floor(iteration / 3);
-
-      this.displayName.set(
-        this.fullName
-          .split('')
-          .map((char, i) => {
-            if (char === ' ') return ' ';
-            if (i < revealedCount) return char;
-            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-          })
-          .join('')
-      );
-
-      iteration++;
-      if (iteration >= maxIterations) {
-        clearInterval(this.scrambleInterval);
-        this.displayName.set(this.fullName);
-        this.cycleRoles();
-      }
-    }, 40);
-  }
 
   private cycleRoles(): void {
     if (this.destroyed) return;

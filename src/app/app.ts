@@ -16,7 +16,9 @@ import { ExperienceComponent } from './components/experience/experience';
     IntroCardComponent, 
     ContactComponent, 
     SkillsComponent,
-    ExperienceComponent],
+    ExperienceComponent,
+  
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

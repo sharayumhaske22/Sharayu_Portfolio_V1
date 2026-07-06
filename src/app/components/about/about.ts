@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild,ElementRef,inject ,signal} from '@angular/core';
 import { ThemeService } from '../../services/theme';
 
 @Component({
@@ -8,5 +8,18 @@ import { ThemeService } from '../../services/theme';
   styleUrl: './about.css',
 })
 export class AboutComponent {
-    roles = ['Angular Developer', 'Full Stack Developer', 'AI Enthusiast'];
+  @ViewChild('titleEl', { static: true }) titleRef!: ElementRef<HTMLElement>;
+
+  private theme = inject(ThemeService);
+  private stopScramble?: () => void;
+
+  titleText = signal('');
+
+  ngOnInit(): void {
+    this.stopScramble = this.theme.scrambleOnScroll(this.titleRef.nativeElement,'About_Me',(val) => this.titleText.set(val));
+  }
+
+  ngOnDestroy(): void {
+    this.stopScramble?.();
+  }
 }

@@ -42,41 +42,73 @@ export class ThemeService {
    * Returns a cleanup function — call it in ngOnDestroy to clear the interval
    * if the component might be destroyed mid-animation.
    */
-  scrambleText(
-    el: HTMLElement,
-    text: string,
-    options?: { speed?: number; step?: number }
-  ): () => void {
-    if (!this.isBrowser) {
-      el.textContent = text;
-      return () => {};
-    }
+  scrambleTextValue(
+   text: string,
+   onUpdate: (value: string) => void,
+   options?: { speed?: number; step?: number }): () => void {
+   if (!this.isBrowser) {
+    onUpdate(text);
+    return () => {};
+   }
 
     const speed = options?.speed ?? 40;
     const step = options?.step ?? 3;
-
     let iteration = 0;
     const maxIterations = text.length * step;
 
-    const interval = setInterval(() => {
-      const revealedCount = Math.floor(iteration / step);
+   const interval = setInterval(() => {
+  const revealedCount = Math.floor(iteration / step);
+  const scrambled = text
+    .split('')
+    .map((char, i) => {
+      if (char === ' ') return ' ';
+      if (i < revealedCount) return char;
+      return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+    })
+    .join('');
+  console.log('tick:', scrambled);   // ADD THIS LINE
+  onUpdate(scrambled);
 
-      el.textContent = text
-        .split('')
-        .map((char, i) => {
-          if (char === ' ') return ' ';
-          if (i < revealedCount) return char;
-          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-        })
-        .join('');
-
-      iteration++;
-      if (iteration >= maxIterations) {
-        clearInterval(interval);
-        el.textContent = text;
-      }
-    }, speed);
-
-    return () => clearInterval(interval);
+  iteration++;
+  if (iteration >= maxIterations) {
+    clearInterval(interval);
+    onUpdate(text);
   }
+}, speed);
+
+  return () => clearInterval(interval);
+}
+
+scrambleOnScroll(
+  el: HTMLElement,
+  text: string,
+  onUpdate: (value: string) => void,
+  options?: { speed?: number; step?: number; threshold?: number }
+): () => void {
+  if (!this.isBrowser) {
+    onUpdate(text);
+    return () => {};
+  }
+
+  let stopScramble: (() => void) | undefined;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          stopScramble = this.scrambleTextValue(text, onUpdate, options);
+          observer.disconnect();
+        }
+      }
+    },
+    { threshold: options?.threshold ?? 0.3 }
+  );
+
+  observer.observe(el);
+
+  return () => {
+    observer.disconnect();
+    stopScramble?.();
+  };
+}
 }

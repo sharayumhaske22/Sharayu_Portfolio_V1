@@ -1,4 +1,4 @@
-import { Component ,ViewChild,ElementRef,inject } from '@angular/core';
+import { Component ,ViewChild,ElementRef,inject ,signal, OnDestroy,OnInit} from '@angular/core';
 import { ThemeService } from '../../services/theme';
 
 interface SkillCategory {
@@ -13,10 +13,19 @@ interface SkillCategory {
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })
-export class SkillsComponent {
-   @ViewChild('title', { static: true }) titleRef!: ElementRef<HTMLElement>;
+export class SkillsComponent implements OnInit, OnDestroy {
+  @ViewChild('title', { static: true }) titleRef!: ElementRef<HTMLElement>;
   private theme = inject(ThemeService);
-  private stopScramble?: () => void;
+   titleText = signal('');
+   private stopScramble?: () => void;
+  
+   ngOnInit(): void {
+     this.stopScramble = this.theme.scrambleTextValue('Skills', (val) => this.titleText.set(val));
+  }
+
+  ngOnDestroy(): void {
+    this.stopScramble?.();
+  }
 
   readonly categories: SkillCategory[] = [
         {

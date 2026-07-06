@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component ,ViewChild, ElementRef, inject , signal } from '@angular/core';
+import {ThemeService } from '../../services/theme';
+
 interface ExperienceEntry {
   role: string;
   company: string;
@@ -16,6 +18,18 @@ interface ExperienceEntry {
   styleUrl: './experience.css',
 })
 export class ExperienceComponent {
+  @ViewChild('titleEl', { static: true }) titleRef!: ElementRef<HTMLElement>;
+  private theme = inject(ThemeService);
+  private stopScramble?: () => void;
+
+  titleText = signal('');
+
+  ngOnInit(): void {
+    this.stopScramble = this.theme.scrambleOnScroll(this.titleRef.nativeElement, 'Experience', (val) => this.titleText.set(val));
+  }
+  ngOnDestroy(): void {
+    this.stopScramble?.();
+  }
   readonly entries: ExperienceEntry[] = [
     {
       role: 'Student Assistant',
