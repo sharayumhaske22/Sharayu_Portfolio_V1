@@ -5,32 +5,36 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-background: #F4F6F4;
-  --color-foreground: #101512;
-  --color-primary: #0E9F5D;
-  --color-accent: #0E8DAE;
+  /* Light mode */
+  --color-background: #FBF7F4;
+  --color-foreground: #1A1210;
+  --color-primary: #C41E1E;
+  --color-accent: #C2540A;
 
   --color-surface: color-mix(in srgb, var(--color-foreground) 4%, var(--color-background));
-  --color-border: color-mix(in srgb, var(--color-foreground) 12%, transparent);
-  --color-muted: color-mix(in srgb, var(--color-foreground) 60%, var(--color-background));
+  --color-border: color-mix(in srgb, var(--color-foreground) 14%, transparent);
+  --color-muted: color-mix(in srgb, var(--color-foreground) 65%, var(--color-background));
 
-  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: 'Inter', ui-sans-serif, sans-serif;
+  --font-accent: 'Playfair Display', serif;
 }
 
 .dark {
-  --color-background: #0A0E0C;
-  --color-foreground: #D7E5DD;
-  --color-primary: #39D98A;
-  --color-accent: #3AC7E8;
+  --color-background: #0D0705;
+  --color-foreground: #F5F1EE;
+  --color-primary: #E5342E;
+  --color-accent: #F97316;
 
   --color-surface: color-mix(in srgb, var(--color-foreground) 6%, var(--color-background));
   --color-border: color-mix(in srgb, var(--color-foreground) 14%, transparent);
-  --color-muted: color-mix(in srgb, var(--color-foreground) 55%, var(--color-background));
+  --color-muted: color-mix(in srgb, var(--color-foreground) 60%, var(--color-background));
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
+  font-family: var(--font-display);
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 

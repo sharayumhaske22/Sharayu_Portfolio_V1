@@ -14,6 +14,7 @@ export class ContactComponent implements OnInit, OnDestroy {
   private theme = inject(ThemeService);
   private stopScramble?: () => void;
   readonly phone = '+49 15901455664';
+  readonly location = 'Koblenz, Germany';
   readonly email = 'sharayumhaske22@gmail.com';
   readonly linkedin = 'https://www.linkedin.com/in/sharayu-mhaske';
   readonly github = 'https://github.com/sharayumhaske22';

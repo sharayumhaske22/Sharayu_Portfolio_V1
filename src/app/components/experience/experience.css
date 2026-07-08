@@ -1,0 +1,4 @@
+li strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}

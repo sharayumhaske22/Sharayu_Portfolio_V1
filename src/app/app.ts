@@ -7,18 +7,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactComponent } from './components/contact/contact';
 import { SkillsComponent } from './components/skills/skills';
 import { ExperienceComponent } from './components/experience/experience';
+import { EducationComponent } from './components/education/education';
+import { ProjectsComponent } from "./components/projects/projects";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, 
-    NavbarComponent, 
-    AboutComponent, 
-    IntroCardComponent, 
-    ContactComponent, 
+  imports: [RouterOutlet,
+    NavbarComponent,
+    AboutComponent,
+    IntroCardComponent,
+    ContactComponent,
     SkillsComponent,
     ExperienceComponent,
-  
-  ],
+    EducationComponent, ProjectsComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

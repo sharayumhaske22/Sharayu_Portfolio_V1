@@ -1,4 +1,10 @@
 <nav class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-border transition-colors duration-500">
+
+  <!-- Scroll progress bar -->
+  <div class="absolute top-0 left-0 h-1.5 bg-primary transition-[width] duration-150 ease-out"
+       [style.width.%]="scrollProgress()">
+  </div>
+
   <div class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
 
     <!-- Left: Menu icon -->
@@ -11,20 +17,17 @@
         <span class="w-8 h-0.5 bg-foreground rounded-full"></span>
         <span class="w-8 h-0.5 bg-foreground rounded-full"></span>
       </button>
-      <button  (click)="refreshPage()" aria-label="Home">
 
-        <a
-        href="#"
-        aria-label="Home"
-        class="text-xl font-bold text-foreground hover:text-primary transition-colors">
-        <#SM>
-      </a>
-    </button>
-      
+      <button (click)="refreshPage()" aria-label="Home">
+        <a href="#" aria-label="Home"
+          class="text-xl font-bold font-mono text-foreground hover:text-primary transition-colors">
+          &lt;#SM&gt;
+        </a>
+      </button>
     </div>
 
     <!-- Right: nav links + toggle -->
-    <div class="hidden md:flex items-center gap-10 text-lg font-semibold text-foreground">
+    <div class="hidden md:flex items-center gap-10 text-lg font-semibold font-mono text-foreground">
       <a href="#about" class="hover:text-primary transition-colors">About</a>
       <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
       <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
@@ -35,13 +38,11 @@
         (click)="theme.toggle()"
         class="w-12 h-12 rounded-full flex items-center justify-center bg-surface hover:scale-110 transition-transform text-2xl"
         aria-label="Toggle theme">
-       @if (theme.isDark()) {
-          <!-- Moon icon -->
+        @if (theme.isDark()) {
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-foreground">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
         } @else {
-          <!-- Sun icon -->
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-foreground">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/>
@@ -59,15 +60,15 @@
 
   </div>
 
-  <!-- Mobile dropdown menu (opens when hamburger is tapped) -->
+  <!-- Mobile dropdown menu -->
   @if (isMenuOpen()) {
-    <div class="md:hidden flex flex-col items-center gap-6 py-8 text-lg font-semibold text-foreground bg-background border-t border-border">
+    <div class="md:hidden flex flex-col items-center gap-6 py-8 text-lg font-semibold font-mono text-foreground bg-background border-t border-border">
       <a (click)="closeMenu()" href="#about" class="hover:text-primary transition-colors">About</a>
       <a (click)="closeMenu()" href="#skills" class="hover:text-primary transition-colors">Skills</a>
       <a (click)="closeMenu()" href="#projects" class="hover:text-primary transition-colors">Projects</a>
       <a (click)="closeMenu()" href="#experience" class="hover:text-primary transition-colors">Experience</a>
       <a (click)="closeMenu()" href="#contact" class="hover:text-primary transition-colors">Contact</a>
-    <button
+      <button
         (click)="theme.toggle()"
         class="w-12 h-12 rounded-full flex items-center justify-center bg-surface"
         aria-label="Toggle theme">

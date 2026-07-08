@@ -31,7 +31,10 @@
 
               <ul class="space-y-2">
                 @for (bullet of entry.bullets; track bullet) {
-                  <li class="text-sm text-muted leading-relaxed">{{ bullet }}</li>
+                  <li class="flex gap-2.5 text-sm text-muted leading-relaxed">
+                    <span class="text-primary mt-1 shrink-0 text-xs">▸</span>
+                    <span [innerHTML]="bullet"></span>
+                  </li>
                 }
               </ul>
             </div>
