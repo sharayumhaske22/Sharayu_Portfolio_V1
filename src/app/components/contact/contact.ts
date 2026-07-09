@@ -18,6 +18,7 @@ export class ContactComponent implements OnInit, OnDestroy {
   readonly email = 'sharayumhaske22@gmail.com';
   readonly linkedin = 'https://www.linkedin.com/in/sharayu-mhaske';
   readonly github = 'https://github.com/sharayumhaske22';
+  readonly resumeUrl = '/assets/Sharayu_resume.pdf';
 
 
   titleText = signal('');
