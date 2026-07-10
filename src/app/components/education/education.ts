@@ -94,7 +94,7 @@ export class EducationComponent {
   ngOnInit(): void {
     this.stopScramble = this.theme.scrambleOnScroll(
       this.titleRef.nativeElement,
-      'Education_Certificates_Languages',
+      'Education.Certificates.Languages',
       (val) => this.titleText.set(val)
     );
   }

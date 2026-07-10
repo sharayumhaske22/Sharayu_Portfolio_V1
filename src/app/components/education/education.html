@@ -1,19 +1,21 @@
 <section id="education" class="py-24 px-6">
   <div class="max-w-6xl mx-auto">
 
-    <h2 #titleEl class="text-3xl md:text-4xl font-bold text-foreground mb-2 font-mono text-center">{{ titleText() }}</h2>
+    
+    <h2 #titleEl class="text-3xl md:text-4xl font-bold text-foreground font-mono mb-3 text-center">{{ titleText() }}</h2>
     <div class="w-16 h-1 bg-primary rounded-full mx-auto mb-16"></div>
+    
 
     <div class="grid lg:grid-cols-[2fr_1fr] gap-6">
 
-      <!-- Left column: Education + Achievements stacked -->
+      <!-- Left column: Education + Achievements -->
       <div class="space-y-6">
 
-        <div class="bg-surface border border-border rounded-2xl p-6">
+        <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
           <h3 class="text-xl font-bold text-foreground font-mono mb-6">Education</h3>
           <div class="space-y-5">
             @for (edu of education; track edu.degree) {
-              <div class="bg-background border border-border rounded-xl p-5">
+              <div class="bg-background border border-border rounded-xl p-5 hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
                 <h4 class="font-bold text-foreground">{{ edu.degree }}</h4>
                 <p class="text-sm text-accent font-semibold">{{ edu.school }}</p>
                 <p class="text-xs text-muted font-mono mb-3">{{ edu.period }} · {{ edu.location }}</p>
@@ -37,11 +39,11 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-border rounded-2xl p-6">
+        <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
           <h3 class="text-xl font-bold text-foreground font-mono mb-5">Achievements</h3>
           <div class="space-y-4">
             @for (item of achievements; track item.title) {
-              <div class="bg-background border border-border rounded-xl p-4">
+              <div class="bg-background border border-border rounded-xl p-4 hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
                 <p class="font-semibold text-foreground text-sm leading-snug">{{ item.title }}</p>
                 <p class="text-xs text-muted mt-1 leading-relaxed">{{ item.detail }}</p>
               </div>
@@ -54,11 +56,11 @@
       <!-- Right column: Certificates + Languages -->
       <div class="space-y-6">
 
-        <div class="bg-surface border border-border rounded-2xl p-6">
+        <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
           <h3 class="text-xl font-bold text-foreground font-mono mb-5">Certificates</h3>
           <div class="space-y-4">
             @for (cert of certificates; track cert.title) {
-              <div class="bg-background border border-border rounded-xl p-4">
+              <div class="bg-background border border-border rounded-xl p-4 hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
                 <p class="font-semibold text-foreground text-sm leading-snug">{{ cert.title }}</p>
                 <p class="text-xs text-accent mt-1">{{ cert.issuer }}</p>
               </div>
@@ -66,11 +68,11 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-border rounded-2xl p-6">
+        <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
           <h3 class="text-xl font-bold text-foreground font-mono mb-5">Languages</h3>
           <div class="space-y-3">
             @for (lang of languages; track lang.name) {
-              <div class="flex items-center justify-between bg-background border border-border rounded-xl px-4 py-3">
+              <div class="flex items-center justify-between bg-background border border-border rounded-xl px-4 py-3 hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
                 <span class="font-semibold text-foreground text-sm">{{ lang.name }}</span>
                 <span class="text-xs font-mono px-2.5 py-1 rounded-full border border-primary/40 text-primary">
                   {{ lang.level }}
