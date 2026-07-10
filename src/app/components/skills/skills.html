@@ -1,17 +1,14 @@
 <section id="skills" class="py-24 px-6">
   <div class="max-w-6xl mx-auto">
-   
-    
+
     <h2 #titleEl class="text-4xl md:text-5xl font-bold text-foreground mb-2 font-mono text-center">
       {{ titleText() }}
     </h2>
     <div class="w-16 h-1 bg-primary rounded-full mx-auto mb-16"></div>
-    
 
-  
     <div class="grid md:grid-cols-3 gap-6">
       @for (category of categories; track category.title) {
-        <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors">
+        <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200">
 
           <div class="flex items-center justify-between mb-5">
             <div class="flex items-center gap-3">
@@ -46,7 +43,7 @@
 
           <div class="flex flex-wrap gap-2">
             @for (skill of category.skills; track skill) {
-              <span class="px-3 py-1.5 rounded-lg bg-background border border-border text-sm text-foreground font-mono">
+              <span class="px-3 py-1.5 rounded-lg bg-background border border-border text-sm text-foreground font-mono hover:bg-primary hover:text-background hover:border-primary hover:-translate-y-0.5 transition-all duration-150 cursor-default">
                 {{ skill }}
               </span>
             }
