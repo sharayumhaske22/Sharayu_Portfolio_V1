@@ -1,37 +1,54 @@
 <section id="about" class="py-24 px-6">
   <div class="max-w-6xl mx-auto">
-    
-    <h2 #titleEl class="text-4xl md:text-5xl font-bold text-foreground mb-2 font-mono text-center">{{ titleText() }}</h2>
-    <div class="w-16 h-1 bg-primary rounded-full mx-auto mb-16"></div>
-    
 
+    <h2 #titleEl class="text-4xl md:text-5xl font-bold font-mono text-foreground mb-2 text-center">{{ titleText() }}</h2>
+    <div class="w-16 h-1 bg-primary rounded-full mx-auto mb-10"></div>
+
+    <!-- Fun animated stats strip -->
+    <div #statsEl class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      @for (stat of stats; track stat.label; let i = $index) {
+        <div class="bg-surface border border-border rounded-2xl py-7 px-5 text-center flex flex-col items-center justify-center gap-1.5 hover:border-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200">
+          <p class="text-3xl md:text-4xl font-extrabold font-sans text-primary leading-none">
+            {{ displayStats()[i] }}{{ stat.suffix }}
+          </p>
+          <p class="text-xs text-muted font-mono tracking-wide">{{ stat.label }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Grid wrapper: this was missing, causing the left card and right column to stack instead of sit side by side -->
     <div class="grid lg:grid-cols-[1.4fr_1fr] gap-6">
 
       <!-- Left: main intro card -->
-      <div class="bg-surface border border-border rounded-2xl p-8">
-        <h3 class="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-1">
+      <div class="bg-surface border border-border rounded-2xl p-8 hover:border-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200">
+        <h3 class="text-3xl md:text-4xl font-extrabold font-sans text-foreground leading-[1.15] mb-0.5">
           Angular Developer
         </h3>
-        <h3 class="text-3xl md:text-4xl font-bold text-primary leading-tight mb-6">
+        <h3 class="text-3xl md:text-4xl font-extrabold font-sans text-primary leading-[1.15] mb-5">
           & AI/ML Enthusiast
         </h3>
 
-        <p class="text-muted leading-relaxed mb-4">
+        <div class="flex items-center gap-2 font-mono text-sm mb-6 min-h-[24px]">
+          <span class="text-muted shrink-0">currently:</span>
+          <span class="text-accent truncate">{{ currentlyItems[currentlyIndex()] }}</span>
+        </div>
+
+        <p class="text-muted leading-relaxed mb-4 font-sans">
           A Master's candidate in Web and Data Science with <strong class="text-foreground">professional experience at Fraunhofer FKIE</strong>, specializing in building scalable B2C applications using Angular, RxJS, and REST API integration.
         </p>
 
-        <p class="text-muted leading-relaxed mb-8">
+        <p class="text-muted leading-relaxed mb-8 font-sans">
           I actively work in Artificial Intelligence — fine-tuning NLP models and conducting published research in Responsible AI. My passion lies in bridging robust frontend engineering with real-world machine learning applications.
         </p>
 
         <div class="flex flex-wrap gap-4">
           <a [href]="linkedin" target="_blank" rel="noopener"
-            class="flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-background font-semibold hover:opacity-90 transition-opacity">
+            class="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-background font-semibold font-sans hover:opacity-90 hover:-translate-y-0.5 transition-all">
             Connect on LinkedIn
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
           </a>
           <a [href]="resumeUrl" download
-            class="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary/10 transition-colors">
+            class="flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold font-sans hover:bg-primary/10 hover:-translate-y-0.5 transition-all">
             Download Resume
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
           </a>
@@ -39,32 +56,34 @@
       </div>
 
       <!-- Right: highlight cards -->
-      <div class="flex flex-col gap-6">
-        @for (item of highlights; track item.title) {
-          <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                @switch (item.icon) {
-                  @case ('frontend') {
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                  }
-                  @case ('ai') {
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 0-4 4v1a3 3 0 0 0-2 5 3 3 0 0 0 2 5v1a4 4 0 0 0 8 0v-1a3 3 0 0 0 2-5 3 3 0 0 0-2-5V6a4 4 0 0 0-4-4z"/></svg>
-                  }
-                  @case ('backend') {
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
-                  }
-                }
-              </div>
-              <div>
-                <h4 class="font-bold text-foreground text-sm mb-1">{{ item.title }}</h4>
-                <p class="text-xs text-muted leading-relaxed">{{ item.description }}</p>
-              </div>
-            </div>
+     <div class="flex flex-col gap-6 h-full">
+       @for (item of highlights; track item.title) {
+       <div class="flex-1 bg-surface border border-border rounded-2xl p-6 hover:border-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200 group">
+        <div class="flex items-start gap-4 h-full">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-200">
+            @switch (item.icon) {
+              @case ('frontend') {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              }
+              @case ('ai') {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 0-4 4v1a3 3 0 0 0-2 5 3 3 0 0 0 2 5v1a4 4 0 0 0 8 0v-1a3 3 0 0 0 2-5 3 3 0 0 0-2-5V6a4 4 0 0 0-4-4z"/></svg>
+              }
+              @case ('backend') {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
+              }
+            }
           </div>
-        }
+          <div class="flex flex-col justify-center">
+            <h4 class="font-bold font-sans text-foreground text-large mb-1">{{ item.title }}</h4>
+            <p class="text-medium text-muted leading-relaxed font-sans">{{ item.description }}</p>
+          </div>
+        </div>
       </div>
+    }
+     </div>
 
     </div>
+    <!-- end grid wrapper -->
+
   </div>
 </section>

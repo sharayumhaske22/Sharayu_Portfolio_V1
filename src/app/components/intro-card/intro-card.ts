@@ -1,43 +1,33 @@
-import { Component, signal,OnDestroy,OnInit, ViewChild, inject, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, inject } from '@angular/core';
 import { ThemeService } from '../../services/theme';
 
 @Component({
   selector: 'app-intro-card',
-  imports: [],
   templateUrl: './intro-card.html',
   styleUrl: './intro-card.css',
 })
-
-export class IntroCardComponent  implements OnInit, OnDestroy {
-  readonly fullName = 'Sharayu_Mhaske';
+export class IntroCardComponent implements OnInit, OnDestroy {
   readonly roles = ['Angular Developer', 'Full Stack Developer', 'Researcher', 'AI/ML Enthusiast'];
 
   displayName = signal('');
   displayRole = signal('');
 
-  private scrambleInterval?: ReturnType<typeof setInterval>;
+  private theme = inject(ThemeService);
+  private stopScramble?: () => void;
   private roleTimer?: ReturnType<typeof setTimeout>;
   private roleIndex = 0;
   private destroyed = false;
 
-  @ViewChild('title', { static: true }) titleRef!: ElementRef<HTMLElement>;
-  private theme = inject(ThemeService);
-  private stopScramble?: () => void;
-
   ngOnInit(): void {
-    this.stopScramble = this.theme.scrambleTextValue('Sharayu_Mhaske',(val) => this.displayName.set(val),
-   );
+    this.stopScramble = this.theme.scrambleTextValue('Sharayu Mhaske', (val) => this.displayName.set(val));
     this.cycleRoles();
   }
-
- 
 
   ngOnDestroy(): void {
     this.destroyed = true;
     this.stopScramble?.();
     clearTimeout(this.roleTimer);
   }
-
 
   private cycleRoles(): void {
     if (this.destroyed) return;
@@ -77,4 +67,3 @@ export class IntroCardComponent  implements OnInit, OnDestroy {
     step();
   }
 }
-

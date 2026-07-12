@@ -7,7 +7,7 @@ const SCRAMBLE_CHARS = '!<>-_\\/[]{}=+*^?#';
 export class ThemeService {
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
-
+  
   isDark = signal<boolean>(false);
 
   constructor() {

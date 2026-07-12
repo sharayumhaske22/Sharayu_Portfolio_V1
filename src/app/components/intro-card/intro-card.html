@@ -1,38 +1,45 @@
-<section class="min-h-screen flex items-center justify-center px-6 pt-24">
-  <div class="max-w-5xl w-full grid md:grid-cols-2 gap-12 items-center justify-items-center md:text-left">
+<section class="min-h-screen flex items-center justify-center px-6 pt-24 relative overflow-hidden">
+  <div class="max-w-6xl w-full grid md:grid-cols-[1.15fr_1fr] gap-12 md:gap-16 items-center">
+
     <!-- Left: text content -->
-    
-    <div>
+    <div class="relative z-10">
       <p class="font-mono text-sm text-primary mb-4 flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
         status: available for work
       </p>
-      <h1 class="text-4xl md:text-6xl font-bold text-foreground mb-4 font-mono tracking-tight">
-       {{ displayName() }}
+
+      <h1 class="text-5xl md:text-7xl font-extrabold font-sans text-foreground mb-5 tracking-tight">
+        {{ displayName() }}
       </h1>
 
-      <p class="font-mono text-lg md:text-xl text-accent mb-6 h-8">
+      <p class="font-mono text-xl md:text-2xl text-accent mb-7 h-9">
         &gt; {{ displayRole() }}<span class="animate-pulse">_</span>
       </p>
 
-      <p class="text-muted text-base leading-relaxed mb-8 max-w-md">
-       Full-stack development meets applied AI — from reactive Angular UIs to fine-tuned transformer models. <br>
-       Published researcher in Responsible AI, currently completing a Master's at the University of Koblenz  
+      <p class="text-muted text-lg leading-relaxed mb-9 max-w-lg font-sans">
+        Full-stack development meets applied AI — from reactive Angular UIs to fine-tuned transformer models.<br>
+        Published researcher in Responsible AI, currently completing a Master's at the University of Koblenz.
       </p>
 
       <div class="flex flex-wrap gap-4">
-        <a href="#contact" class="px-6 py-3 rounded-half bg-primary text-background font-semibold hover:opacity-90 transition-opacity">
+        <a href="#contact"
+          class="flex items-center justify-center px-7 py-3.5 rounded-full bg-primary text-background font-semibold font-sans text-lg hover:opacity-90 hover:-translate-y-0.5 transition-all">
           Let's Connect
         </a>
-        <a href="#projects" class="px-6 py-3 rounded-half border-2 border-primary text-primary font-semibold hover:bg-primary/10 transition-colors">
+        <a href="#projects"
+          class="flex items-center justify-center px-7 py-3.5 rounded-full border-2 border-primary text-primary font-semibold font-sans text-lg hover:bg-primary/10 hover:-translate-y-0.5 transition-all">
           View Work
         </a>
       </div>
     </div>
 
     <!-- Right: circular image -->
-    <div class="flex justify-center md:justify-end">
-      <div class="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg">
+    <div class="relative flex justify-center">
+      <div class="absolute inset-0 -z-10 blur-3xl opacity-30"
+           style="background: radial-gradient(circle, var(--color-primary), transparent 70%);">
+      </div>
+
+      <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg hover:border-primary hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20 transition-all duration-200">
         <img src="assets/profile_photo.jpeg" alt="Sharayu Mhaske" class="w-full h-full object-cover" />
       </div>
     </div>
