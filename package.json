@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:Sharayu_Portfolio_V1": "node dist/Sharayu_Portfolio_V1/server/server.mjs"
+    "serve:ssr:Sharayu_Portfolio_V1": "node dist/Sharayu_Portfolio_V1/server/server.mjs",
+    "deploy": "ng build --base-href \"https://sharayumhaske22.github.io/Sharayu_Portfolio_V1/\" && npx angular-cli-ghpages --dir=dist/Sharayu_Portfolio_V1/browser"
   },
   "private": true,
   "packageManager": "npm@10.5.1",
