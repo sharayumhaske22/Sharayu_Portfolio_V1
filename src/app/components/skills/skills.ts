@@ -28,8 +28,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
     this.stopScramble?.();
   }
 
-  readonly categories: SkillCategory[] = [
-        {
+readonly categories: SkillCategory[] = [
+    {
       title: 'Frontend',
       icon: 'frontend',
       skills: ['Angular 17+', 'RxJS', 'Angular Material', 'Angular CDK', 'React.js', 'HTML5', 'CSS3'],
@@ -37,7 +37,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
     {
       title: 'Backend',
       icon: 'backend',
-      skills: ['Spring Boot', 'Django REST Framework', 'REST APIs'],
+      skills: ['Node.js', 'Express.js', 'FastAPI', 'Spring Boot', 'Django REST Framework', 'REST APIs'],
     },
     {
       title: 'Programming Languages',
@@ -52,10 +52,10 @@ export class SkillsComponent implements OnInit, OnDestroy {
     {
       title: 'Databases',
       icon: 'database',
-      skills: ['Firebase Firestore', 'MongoDB', 'SQL', 'AngularFire'],
+      skills: ['MySQL', 'Firebase Firestore', 'MongoDB', 'AngularFire'],
     },
     {
-      title: 'Tools ',
+      title: 'Tools',
       icon: 'tools',
       skills: ['Git', 'GitHub', 'GitLab', 'Maven', 'Angular CLI', 'CI/CD', 'Postman'],
     },
