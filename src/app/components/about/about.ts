@@ -30,7 +30,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   statsStarted = signal(false);
 
   readonly linkedin = 'https://www.linkedin.com/in/sharayu-mhaske';
-  readonly resumeUrl = '/assets/Sharayu_resume.pdf';
+  readonly resumeUrl = 'assets/Sharayu_resume.pdf';
 
   readonly stats: Stat[] = [
     { value: 2, suffix: '+', label: 'Years Experience' },
