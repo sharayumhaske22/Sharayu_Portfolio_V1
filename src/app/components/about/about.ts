@@ -45,7 +45,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     'fine-tuning transformer models 🧠',
     'debugging Angular signals ⚡',
     'reading ICAAI papers 📄',
-    'fueled by chai ☕',
+    'building REST APIs with Spring Boot 🛠️',
   ];
   currentlyIndex = signal(0);
   private currentlyTimer?: ReturnType<typeof setInterval>;
