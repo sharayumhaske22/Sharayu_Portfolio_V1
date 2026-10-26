@@ -57,7 +57,7 @@ readonly categories: SkillCategory[] = [
     {
       title: 'Tools',
       icon: 'tools',
-      skills: ['Git', 'GitHub', 'GitLab', 'Maven', 'Angular CLI', 'CI/CD'],
+      skills: ['Git', 'GitHub', 'GitLab', 'Docker', 'Angular CLI', 'CI/CD'],
     },
   ];
 }
