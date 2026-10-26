@@ -1,4 +1,4 @@
-import { Component ,ViewChild,ElementRef,inject ,signal, OnDestroy,OnInit} from '@angular/core';
+import { Component ,ViewChild, ElementRef, inject ,signal, OnDestroy,OnInit} from '@angular/core';
 import { ThemeService } from '../../services/theme';
 
 interface SkillCategory {
@@ -32,7 +32,7 @@ readonly categories: SkillCategory[] = [
     {
       title: 'Frontend',
       icon: 'frontend',
-      skills: ['Angular 17+', 'RxJS', 'Angular Material', 'Angular CDK', 'React.js', 'HTML5', 'CSS3'],
+      skills: ['Angular 17+', 'RxJS', 'Angular Material', 'Angular CDK', 'HTML', 'CSS', 'Bootstrap', 'Tailwind CSS', 'SCSS','JavaScript', 'TypeScript'],
     },
     {
       title: 'Backend',
@@ -42,22 +42,22 @@ readonly categories: SkillCategory[] = [
     {
       title: 'Programming Languages',
       icon: 'languages',
-      skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'C', 'SQL', 'PHP'],
+      skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'C', 'SQL'],
     },
     {
       title: 'AI / ML',
       icon: 'ai',
-      skills: ['RoBERTa', 'DistilBERT', 'Hugging Face Transformers', 'TensorFlow', 'Scikit-learn', 'Seq2Seq Models', 'Word Embeddings', 'Pandas', 'NumPy'],
+      skills: ['RoBERTa', 'DistilBERT', 'Hugging Face Transformers', 'TensorFlow', 'Scikit-learn', 'Pandas', 'NumPy'],
     },
     {
       title: 'Databases',
       icon: 'database',
-      skills: ['MySQL', 'Firebase Firestore', 'MongoDB', 'AngularFire'],
+      skills: ['MySQL', 'Firebase Firestore', 'postgreSQL']
     },
     {
       title: 'Tools',
       icon: 'tools',
-      skills: ['Git', 'GitHub', 'GitLab', 'Maven', 'Angular CLI', 'CI/CD', 'Postman'],
+      skills: ['Git', 'GitHub', 'GitLab', 'Maven', 'Angular CLI', 'CI/CD'],
     },
   ];
 }

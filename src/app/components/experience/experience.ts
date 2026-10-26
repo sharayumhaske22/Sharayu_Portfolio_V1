@@ -38,14 +38,14 @@ export class ExperienceComponent {
       period: 'May 2024 – Present',
       tag: 'CURRENT',
       bullets: [
-        'Architected a dynamic tree component using <strong>Angular Material</strong> (Mat-Tree, MatDialog, MatFormField) to render and edit nested <strong>JSON data structures</strong>.',
-        'Implemented <strong>Angular CDK Drag & Drop</strong> for real-time hierarchical node reordering, supporting parent-child restructuring and immutable state updates.',
-        'Built scalable <strong>Reactive Forms</strong> using FormBuilder, FormGroup, and Validators for dynamic node creation, inline editing, and form validation.',
-        'Enabled cross-component communication via <strong>Angular EventEmitter</strong> and @Input/@Output decorators to propagate state changes across a reactive SPA.',
-        'Managed application state using <strong>RxJS BehaviorSubject and ReplaySubject</strong> within Angular Services, enabling real-time UI synchronization.',
-        'Integrated <strong>RESTful APIs</strong> using <strong>Angular HttpClient</strong> with typed HTTP requests to serialize and persist JSON payloads to backend services.',
-        'Built <strong>Java Spring Boot</strong> backend services, managing dependencies and builds with <strong>Maven</strong>, and consumed REST API contracts integrated with the Angular frontend.',
-        'Versioned and collaborated on all features using <strong>Git, GitHub, and GitLab</strong>, managing feature branches, pull requests, and code reviews.']
+    'Creating a dynamic tree structure in Angular from custom <strong>JSON data</strong> using recursive functions to generate parent and child nodes.',
+    'Making the tree drag-and-droppable using <strong>Angular CDK Drag & Drop</strong>, allowing nodes to be reordered and restructured.',
+    'Updating <strong>JSON data</strong> in real time to reflect all changes made through drag and drop.',
+    'Creating reactive forms using <strong>Angular FormBuilder and FormGroup</strong> to add new nodes to the tree.',
+    'Managing tree data and state using <strong>RxJS BehaviorSubject</strong> inside an Angular service, enabling real-time updates.',
+    'Creating backend services in <strong>Spring Boot</strong> to traverse the tree structure and communicate with the tree component.',
+    'Using <strong>Git and GitHub</strong> for version control throughout development.' ],
+
     },
     {
       role: 'Software Development Intern',
